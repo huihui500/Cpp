@@ -55,7 +55,7 @@
 - `name="gui_required" default="false`：gzclient（用户界面窗口）退出时终止launch脚本
 
 #### [URDF](http://wiki.ros.org/urdf) and [XACRO](https://blog.csdn.net/lxlong89940101/article/details/88679695)
-- `xacro`转`urdf`：``rosrun xacro xacro `rospack find robot_pkg`/robots/robot.xacro -o /tmp/robot.urdf``
+- [`xacro`转`urdf`](http://wiki.ros.org/xacro)：``rosrun xacro xacro `rospack find robot_pkg`/robots/robot.xacro -o /tmp/robot.urdf``
   - 结构查看:`check_urdf pr2.urdf`
   - 可视化结构tree:`urdf_to_graphiz robot.urdf`
 - 向gazebo添加模型：
@@ -67,10 +67,22 @@
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
     	args="-urdf -model ROBOT -file `rospack find robot_pkg`/urdf/ROBOT.urdf -x 0 -y 0 -z 1"/> 
     <!-- 或者是以param形式添加模型 -->
-    <!-- <arg name="model" default="$(find gazebo_pkg)/urdf/waking_robot.xacro" /> -->
-    <param name="robot_description" command="$(find xacro)/xacro  --inorder $(arg model)" />
+    # xacro加载方式
+    # <arg name="model" default="$(find gazebo_pkg)/urdf/waking_robot.xacro" />
+    # <param name="robot_description" command="$(find xacro)/xacro  --inorder $(arg model)" />
     
+    # urdf直接加载
     <param name="robot_description" command="`rospack find robot_pkg`/urdf/ROBOT.urdf" />
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
 	    args="-urdf -model robot -param robot_description -z 0.05"/> 
     ```
+    
+## Q&A 
+1. gazebo(v9.0.0, ros-melodic)仿真error:`Failed to load nodelet[/cmd_vel_mux] of type [yocs_cmd_vel_mux...]`
+   - A: `sudo apt install ros-melodic-yocs-cmd-vel-mux` ,然后修改pkg中的package.xml最底部:
+        ``` xml
+        <export>
+            <gazebo_ros gazebo_model_path="${prefix}/models/"/>
+            <nodelet plugin="${prefix}/nodelets.xml"/>
+        </export>
+        ```

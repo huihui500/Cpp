@@ -1,8 +1,24 @@
-# [launch](http://wiki.ros.org/roslaunch/XML/node) 语法详解
+# [launch](http://wiki.ros.org/roslaunch/XML) 语法详解
 
+#### arg
+- 全局变量
 - 变量定义:`<arg name="r", value="...">` or `<arg name="r", default="...">`
-  - value/default可以任意，都加双引号;区别是default可以被终端覆盖，value不可以
-  - 引用该变量:`$(arg r)`
+- value/default可以任意，都加双引号;区别是default可以被终端覆盖，value不可以
+- 引用该变量:`$(arg r)`
+#### param
+- 避免全局使用，在namespace里使用
+- attribute
+  - name="namespace/name": Parameter name. Namespaces can be included in the parameter name, but globally specified names should be avoided.
+  - value="value"(optional): Defines the value of the parameter. If this attribute is omitted, binfile, textfile or command must be specified.
+  - type="str|int|double|bool|yaml"(optional): Specifies the type of the parameter. If you don't specify the type, roslaunch will attempt to automatically determine the type. These rules are very basic:
+    - numbers with '.'s are floating point, integers otherwise;
+    - "true" and "false" are boolean (not case-sensitive).
+    - all other values are strings
+  - textfile="$(find pkg-name)/path/file.txt"(optional): The contents of the file will be read and stored as a string. The file must be locally accessible, though it is strongly recommended that you use the package-relative $(find)/file.txt syntax to specify the location.
+  - binfile="$(find pkg-name)/path/file"(optional): The contents of the file will be read and stored as a base64-encoded XML-RPC binary object. The file must be locally accessible, though it is strongly recommended that you use the package-relative $(find)/file.txt syntax to specify the location.
+  - command="$(find pkg-name)/exe '$(find pkg-name)/arg.txt'"(optional): The output of the command will be read and stored as a string. It is strongly recommended that you use the package-relative $(find)/file.txt syntax to specify file arguments. You should also quote file arguments using single quotes due to XML escaping requirements.
+
+#### node 
 - 节点启动:
     ``` xml
     <node pkg="…" type="…" name="…" respawn=true ns="…"/>
