@@ -1,9 +1,11 @@
 # docker
 
 ## demo
+
 - [gazebo](https://hub.docker.com/_/gazebo)
-  
+
 ## run
+
 > 容器运行命令
 
 - `-d`:后台运行容器，并返回容器ID
@@ -17,4 +19,5 @@
 - `--volume，-v`: 绑定一个卷
 
 ### examples
-- ubuntu: 
+
+- ubuntu:`docker rundocker run -it -d --name ros_test -v /home/bag/mywork:~/catkin_ws/src -p 8022:22 -p 8889:8888 -p 5000:5001 ubuntu:20.04 /bin/bash `

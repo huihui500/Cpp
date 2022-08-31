@@ -19,7 +19,7 @@ deb http://mirrors.ustc.edu.cn/ubuntu/ bionic-security multiverse
 ```
 
 ``` bash
-echo "deb ..(中科大源)" > /ect/apt/sources.list
+echo "deb ..(中科大源)" > /etc/apt/sources.list
 apt update
 apt upgrade -y
 # ros ustc源

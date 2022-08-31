@@ -1,8 +1,7 @@
 # software
 
-## chat
 
-### wechat
+### wechat && wechat work
 ```
 mkdir ./deepintemp
 cd ./deepintemp
@@ -36,3 +35,13 @@ rm -vfr ./deepintemp
   - wechat:`https://packages.deepin.com/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.6.8.65deepin0_i386.deb`
   - weixin_work:`https://packages.deepin.com/deepin/pool/non-free/d/deepin.com.weixin.work/deepin.com.weixin.work_2.8.10.2010deepin0_i386.deb`
 
+## SJTU VPN on Ubuntu
+
+## STM32 on Linux
+
+### Env
+- STM32CubeMX
+- JAVA
+- arm-linux-gcc交叉编译器
+  - `sudo apt-get install gcc-arm-linux-gnueabi`
+- CLion or VScode

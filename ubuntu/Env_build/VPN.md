@@ -1,3 +1,0 @@
-# VPN
-
-## SJTU VPN
