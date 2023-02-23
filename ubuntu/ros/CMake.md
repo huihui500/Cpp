@@ -28,6 +28,8 @@ find_package(catkin REQUIRED COMPONENTS
     set(ONNXRUNTIME_LIB ${ONNXRUNTIME_ROOT_PATH}/lib/libonnxruntime.so.1.9.0)
     ```
 ## opencv
+- ros下opencv3.2:`set(OpenCV_DIR /usr/share/OpenCV/)` 
+- opencv4:`set(OpenCV_DIR /usr/local/share/OpenCV)`
 ### 版本查看
 - OpenCV3: `pkg-config --modversion opencv`
 - OpenCV4: `pkg-config --modversion opencv`
