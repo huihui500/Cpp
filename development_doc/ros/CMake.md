@@ -34,5 +34,12 @@ find_package(catkin REQUIRED COMPONENTS
 - OpenCV3: `pkg-config --modversion opencv`
 - OpenCV4: `pkg-config --modversion opencv`
 
+## vscode头文件跳转问题
+- 修改CMakeLists.txt，在前面设置编译标准的那里添加`set(CMAKE_EXPORT_COMPILE_COMMANDS ON)`生成 complie_commands.json
+- recompile project will generate one file: `compile_command.json`
+- add path(`${workspaceFolder}/build/compile_commands.json`) of `compile_command.json` to `.vscode/c_cpp_properties.json` for item `"compileCommands"` in `configurations":[{  }]`   
+![cmake_compile_command](../pic/cmake_compile_command.png)
+- 如果不行，就不使用Cmake Tools 插件配置当前项目，在.vscode/c_cpp_properties.json中注释掉 "configurationProvider": "ms-vscode.makefile-tools", 关闭窗口重新打开
+
 
 

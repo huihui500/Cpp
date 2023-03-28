@@ -2,6 +2,7 @@
 
 ## demo
 ### ros:rviz可视化
+- nvidia版本
 ```sh
 <!-- 安装nvidia-docker后一定要重启docker -->
 sudo systemctl restart docker
@@ -13,6 +14,8 @@ sudo nvidia-docker run --gpus all -it \
    --name orbslam2 \
    orbslam2gl
 ```
+- no nvidia version
+  [rviz_dcoker 部署](https://answers.ros.org/question/393837/run-rviz-in-a-docker-with-hardware-acceleration-no-gui/)
 ## 换源
 ```bash
 cp /etc/apt/sources.list /etc/apt/sources.list.ori && \

@@ -27,14 +27,14 @@ RUN apt install python-rosdep
 RUN apt install -y python-pip
 
 # ros init;rosdep update
-RUN rosdep init
 RUN /bin/sh -c "pip install rosdepc"
+RUN rosdep init
 RUN rosdepc update
 
 # software bag
 # COPY ./exploration_environment  /home/exploration_environment
 
 ## 环境编译 catkin_make有误 【TODO】待解决
-RUN cd  /home/exploration_environment 
+# RUN cd  /home/exploration_environment 
 # RUN /bin/bash -c "./exec.sh"
  #&& roslaunch vehicle_simulator system_garage.launch 

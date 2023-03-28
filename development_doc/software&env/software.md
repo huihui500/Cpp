@@ -45,3 +45,5 @@ rm -vfr ./deepintemp
 - arm-linux-gcc交叉编译器
   - `sudo apt-get install gcc-arm-linux-gnueabi`
 - CLion or VScode
+
+## zsh
